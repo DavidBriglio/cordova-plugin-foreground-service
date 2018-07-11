@@ -1,6 +1,6 @@
 {
     "name": "cordova-plugin-foreground-service",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Enable background processing with a foreground ongoing notification.",
     "cordova": {
       "id": "cordova-plugin-foreground-service",

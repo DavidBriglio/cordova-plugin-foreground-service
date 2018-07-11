@@ -24,7 +24,8 @@ public class ForegroundPlugin extends CordovaPlugin {
                 intent.putExtra("title", args.getString(0))
                     .putExtra("text", args.getString(1))
                     .putExtra("icon", args.getString(2))
-                    .putExtra("id", args.getString(3));
+                    .putExtra("importance", args.getString(3))
+                    .putExtra("id", args.getString(4));
                 
                 // Start the service
                 activity.getApplicationContext().startForegroundService(intent);

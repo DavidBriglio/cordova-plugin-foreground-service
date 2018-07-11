@@ -29,8 +29,33 @@ public class ForegroundService extends Service {
     private void startPluginForegroundService(Bundle extras) {
         Context context = getApplicationContext();
 
+        // Delete notification channel if it already exists
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.deleteNotificationChannel("foreground.service.channel");
+
+        // Get notification channel importance
+        Integer importance;
+
+        try {
+            importance = Integer.parseInt((String) extras.get("importance"));
+        } catch (NumberFormatException e) {
+            importance = 1;
+        }
+
+        switch(importance) {
+            case 2:
+                importance = NotificationManager.IMPORTANCE_DEFAULT;
+                break;
+            case 3:
+                importance = NotificationManager.IMPORTANCE_HIGH;
+                break;
+            default:
+                importance = NotificationManager.IMPORTANCE_LOW;
+            // We are not using IMPORTANCE_MIN because we want the notification to be visible
+        }
+
         // Create notification channel
-        NotificationChannel channel = new NotificationChannel("foreground.service.channel", "Background Services", NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channel = new NotificationChannel("foreground.service.channel", "Background Services", importance);
         channel.setDescription("Enables background processing.");
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
 

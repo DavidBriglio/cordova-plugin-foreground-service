@@ -29,23 +29,21 @@ cordova plugin add https://github.com/DavidBriglio/cordova-plugin-foreground-ser
 To enable the foreground service, call the `start` method:
 
 ```javascript
-cordova.plugins.foregroundService.start('Notification Title', 'Notification Text', 'drawable-icon-name', [notification id]);
+cordova.plugins.foregroundService.start('Notification Title', 'Notification Text', 'drawable-icon-name', [notification importance], [notification id]);
 
-//ie: ('myicon.png' is in the 'res/drawable' folder)
-cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon', 10);
+// High priority with notification id 10
+// ('myicon.png' is in the 'res/drawable' folder)
+cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon', 3, 10);
 
 // Notification id is optional
+cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon', 3);
+
+// Notification importance is optional, the default is 1 - Low (no sound or vibration)
 cordova.plugins.foregroundService.start('GPS Running', 'Background Service', 'myicon');
 
-// Icon is also optional, but will use a 'star' icon as the default
+// Icon is optional, but will use a 'star' icon as the default
 cordova.plugins.foregroundService.start('GPS Running', 'Background Service');
 ```
-
-The drawable icon can be any drawable image that exists in the resource folder. This means you must copy the icon you want to use into the `platforms/android/app/src/main/res/drawable` folder set. If no icon can be found using the icon name parameter, a default star icon will be used.
-
-**NOTE:** The normal android drawable (`R.drawable`) icons are not available for use as icons. You cannot reference these icons through the `start` icon parameter. Include your icon manually in the folders mentioned above.
-
-The notification id is a customizable integer that is used to reference the notification that will be launched. This is customizable to avoid conflicting with any other notifications. If this is not included, a default id will be used.
 
 ### Stop Method
 
@@ -54,6 +52,30 @@ To disable the foreground service, call the `stop` method:
 ```javascript
 cordova.plugins.foregroundService.stop();
 ```
+
+---
+
+## Parameters
+
+### **Icon**
+
+The drawable icon can be any drawable image that exists in the resource folder. This means you must copy the icon you want to use into the `platforms/android/app/src/main/res/drawable` folder set. If no icon can be found using the icon name parameter, a default star icon will be used.
+
+**NOTE:** The normal android drawable (`R.drawable`) icons are not available for use as icons. You cannot reference these icons through the `start` icon parameter. Include your icon manually in the folders mentioned above.
+
+### **Notification ID**
+
+The notification id is a customizable integer that is used to reference the notification that will be launched. This is customizable to avoid conflicting with any other notifications. If this is not included, a default id will be used.
+
+### **Notification Importance**
+
+Notification importance dictates how the notification is initially presented:
+
+Value | Importance | Description
+--- | --- | ---
+1|IMPORTANCE_LOW|Does not make a sound or heads-up display. (Default)
+2|IMPORTANCE_DEFAULT|Makes a sound, but no heads-up display.
+3|IMPORTANCE_HIGH|Makes a sound and heads-up display.
 
 ---
 
