@@ -1,0 +1,31 @@
+{
+    "name": "cordova-plugin-foreground-service",
+    "version": "1.0.0",
+    "description": "Enable background processing with a foreground ongoing notification.",
+    "cordova": {
+      "id": "cordova-plugin-foreground-service",
+      "platforms": [
+        "android"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DavidBriglio/cordova-plugin-foreground-service"
+    },
+    "keywords": [
+      "cordova",
+      "android",
+      "background",
+      "foreground",
+      "service",
+      "ecosystem:cordova",
+      "cordova-android"
+    ],
+    "author": "David Briglio",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/DavidBriglio/cordova-plugin-foreground-service/issues"
+    },
+    "homepage": "https://github.com/DavidBriglio/cordova-plugin-foreground-service"
+  }
+  
