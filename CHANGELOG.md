@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2 - 18-09-2019
+
+- Removed cordova version requirement.
+
 ## 1.1.1 - 02-04-2019
 
 - Added clarification in README about plugin functionality
