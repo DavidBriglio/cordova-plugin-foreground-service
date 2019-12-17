@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3 - 17-12-2019
+
+- Added FOREGROUND_SERVICE permission
+
 ## 1.1.2 - 18-09-2019
 
 - Removed cordova version requirement.
