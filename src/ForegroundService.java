@@ -31,7 +31,14 @@ public class ForegroundService extends Service {
 
         // Delete notification channel if it already exists
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.deleteNotificationChannel("foreground.service.channel");
+
+        // Prevent RuntimeException such as: Not allowed to delete channel foreground.service.channel with a foreground service
+        // See: https://github.com/DavidBriglio/cordova-plugin-foreground-service/issues/25
+        try {
+            manager.deleteNotificationChannel("foreground.service.channel");
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
         // Get notification channel importance
         Integer importance;
